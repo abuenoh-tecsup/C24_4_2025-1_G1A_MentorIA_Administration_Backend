@@ -16,10 +16,9 @@ class MaterialSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Material
-        fields = ['url', 'id', 'module', 'title', 'description', 'type', 'url_field', 'creation_date', 'favorited_by']
+        fields = ['url', 'id', 'module', 'title', 'description', 'type', 'resource_url', 'creation_date', 'favorited_by']
         extra_kwargs = {
             'url': {'view_name': 'material-detail'},
-            'url_field': {'source': 'url'}
         }
 
 class FavoriteMaterialSerializer(serializers.HyperlinkedModelSerializer):

@@ -13,7 +13,7 @@ class Material(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='document')
-    url = models.URLField()
+    resource_url = models.URLField()
     creation_date = models.DateTimeField(auto_now_add=True)
     
     class Meta:
