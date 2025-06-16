@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from .models import User, Professor, Student
+from academic.models import Career
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -59,7 +60,7 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
     )
     career = serializers.HyperlinkedRelatedField(
         view_name='career-detail',
-        queryset='academic.Career'
+        queryset=Career.objects.all()
     )
     user_details = UserSerializer(source='user', read_only=True)
     
