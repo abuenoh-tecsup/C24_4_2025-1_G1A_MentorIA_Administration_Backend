@@ -25,9 +25,9 @@ def seed_courses():
 
     # Crear módulos
     modules_data = [
-        {"title": "Introducción al curso", "description": "Presentación del temario y objetivos", "order": 1},
-        {"title": "Metodologías de desarrollo", "description": "Estudio de metodologías ágiles y tradicionales", "order": 2},
-        {"title": "Pruebas de software", "description": "Tipos de pruebas y herramientas", "order": 3},
+        {"title": "Introducción al curso", "description": "Presentación del temario y objetivos", "module_order": 1},
+        {"title": "Metodologías de desarrollo", "description": "Estudio de metodologías ágiles y tradicionales", "module_order": 2},
+        {"title": "Pruebas de software", "description": "Tipos de pruebas y herramientas", "module_order": 3},
     ]
 
     for mod in modules_data:

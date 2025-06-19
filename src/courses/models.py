@@ -17,13 +17,13 @@ class Module(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='modules')
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
-    order = models.IntegerField(default=1)
+    module_order = models.IntegerField(default=1)
     
     class Meta:
         db_table = 'module'
         verbose_name = 'Módulo'
         verbose_name_plural = 'Módulos'
-        ordering = ['order']
+        ordering = ['module_order']
     
     def __str__(self):
         return f"{self.course} - {self.title}"

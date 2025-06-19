@@ -63,7 +63,7 @@ class ModuleSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Module
-        fields = ['url', 'id', 'course', 'title', 'description', 'order', 'materials', 'tasks', 'evaluations', 'forums']
+        fields = ['url', 'id', 'course', 'title', 'description', 'module_order', 'materials', 'tasks', 'evaluations', 'forums']
         extra_kwargs = {
             'url': {'view_name': 'module-detail'}
         }
