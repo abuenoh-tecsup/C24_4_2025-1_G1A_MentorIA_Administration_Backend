@@ -1,39 +1,16 @@
 from rest_framework import serializers
 from .models import Course, Module, Enrollment, Announcement
 from academic.models import Subject, AcademicPeriod
-from authentication.models import User, Student
+from authentication.models import User, Professor, Student
 
-class CourseSerializer(serializers.HyperlinkedModelSerializer):
-    subject = serializers.HyperlinkedRelatedField(
-        view_name='subject-detail',
-        queryset=Subject.objects.all()
-    )
-    professor = serializers.HyperlinkedRelatedField(
-        view_name='user-detail',
-        queryset=User.objects.all()
-    )
-    modules = serializers.HyperlinkedRelatedField(
-        many=True,
-        read_only=True,
-        view_name='module-detail'
-    )
-    enrollments = serializers.HyperlinkedRelatedField(
-        many=True,
-        read_only=True,
-        view_name='enrollment-detail'
-    )
-    announcements = serializers.HyperlinkedRelatedField(
-        many=True,
-        read_only=True,
-        view_name='announcement-detail'
-    )
+# serializers.py
+class CourseSerializer(serializers.ModelSerializer):
+    professor = serializers.PrimaryKeyRelatedField(queryset=Professor.objects.all())  # Cambiar a Professor
+    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
     
     class Meta:
         model = Course
-        fields = ['url', 'id', 'subject', 'professor', 'modules', 'enrollments', 'announcements']
-        extra_kwargs = {
-            'url': {'view_name': 'course-detail'}
-        }
+        fields = ['id', 'subject', 'professor']
 
 class ModuleSerializer(serializers.HyperlinkedModelSerializer):
     course = serializers.HyperlinkedRelatedField(
