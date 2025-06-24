@@ -3,10 +3,7 @@ from django.utils.timezone import make_aware
 from academic.models import Career, Subject, AcademicPeriod
 
 def seed_academic():
-    # Limpiar datos previos
-    AcademicPeriod.objects.all().delete()
-    Subject.objects.all().delete()
-    Career.objects.all().delete()
+    print("Creando carreras, materias y periodo académico...")
 
     # Crear carrera
     career = Career.objects.create(

@@ -3,7 +3,7 @@ from django.conf import settings
 
 class Course(models.Model):
     subject = models.ForeignKey('academic.Subject', on_delete=models.CASCADE, related_name='courses')
-    professor = models.ForeignKey('authentication.Professor', on_delete=models.CASCADE, related_name='taught_courses')  # Cambiar a Professor
+    professor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='taught_courses')
     
     class Meta:
         db_table = 'course'
@@ -12,7 +12,7 @@ class Course(models.Model):
     
     def __str__(self):
         return f"{self.subject.name} - {self.professor.get_full_name()}"
-    
+
 class Module(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='modules')
     title = models.CharField(max_length=200)

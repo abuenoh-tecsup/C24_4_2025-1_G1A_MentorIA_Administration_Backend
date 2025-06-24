@@ -1,15 +1,18 @@
 from core.seeders.academic import seed_academic
 from core.seeders.authentication import seed_authentication
 from core.seeders.courses import seed_courses
-from core.db_utils import reset_auto_increment_all_apps
+from core.db_utils import clear_all_tables, reset_auto_increment_all_apps
 
 def run_seed():
-    # Resetea los AUTO_INCREMENT de todas las tablas
+    print("Eliminando todos los datos...")
+    clear_all_tables()
+
+    print("Reseteando AUTO_INCREMENT...")
     reset_auto_increment_all_apps()
-    
-    # Ejecuta los seeders de cada app
+
+    print("Seedando datos iniciales...")
     seed_academic()
     seed_authentication()
     seed_courses()
-    
-    
+
+    print("Seed completo.")

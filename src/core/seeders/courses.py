@@ -4,11 +4,6 @@ from academic.models import Subject, AcademicPeriod
 from authentication.models import Professor, Student
 
 def seed_courses():
-    print("Limpiando datos de courses...")
-    Enrollment.objects.all().delete()
-    Module.objects.all().delete()
-    Course.objects.all().delete()
-
     print("Creando cursos y módulos...")
 
     # Obtener datos existentes

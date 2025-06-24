@@ -3,12 +3,8 @@ from authentication.models import User, Professor, Student
 from academic.models import Career
 
 def seed_authentication():
-    print("Limpiando datos de authentication...")
-    Student.objects.all().delete()
-    Professor.objects.all().delete()
-    User.objects.all().delete()
 
-    print("Creando usuarios...")
+    print("Creando usuarios, profesores y estudiantes...")
 
     # Admin user
     admin_user = User.objects.create_superuser(

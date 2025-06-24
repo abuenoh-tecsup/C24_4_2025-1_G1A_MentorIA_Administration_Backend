@@ -22,6 +22,8 @@ class Submission(models.Model):
         ('pending', 'Pending'),
         ('submitted', 'Submitted'),
         ('graded', 'Graded'),
+        ('late', 'Late'),
+        ('empty', 'Empty'),
     ]
     
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='submissions')
