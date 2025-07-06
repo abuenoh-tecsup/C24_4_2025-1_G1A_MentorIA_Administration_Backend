@@ -1,17 +1,20 @@
+# authentication/admin.py
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User, Professor, Student
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
+    # Añadimos 'google_id' a los fieldsets para que sea visible y editable
     fieldsets = BaseUserAdmin.fieldsets + (
         ('Información adicional', {
-            'fields': ('phone', 'profile_picture_url', 'role')
+            'fields': ('phone', 'profile_picture_url', 'role', 'google_id') # <-- ¡AQUÍ ESTÁ EL CAMBIO!
         }),
     )
-    list_display = ('username', 'email', 'first_name', 'last_name', 'role')
+    
+    list_display = ('username', 'email', 'first_name', 'last_name', 'role', 'google_id') # <-- Opcional: para verlo en la lista
     list_filter = ('role',)
-    search_fields = ('username', 'email', 'first_name', 'last_name')
+    search_fields = ('username', 'email', 'first_name', 'last_name', 'google_id') # <-- Opcional: para buscar por google_id
     ordering = ('username',)
 
 # Admin para el modelo Professor
