@@ -12,17 +12,20 @@ class UserViewSet(viewsets.ModelViewSet):
     
     @action(detail=False, methods=['post'])
     def login(self, request):
-        serializer = LoginSerializer(data=request.data)
+        serializer = LoginSerializer(data=request.data)  # Usamos el LoginSerializer
         if serializer.is_valid():
             user = serializer.validated_data['user']
-            login(request, user)
-            token, created = Token.objects.get_or_create(user=user)
+            login(request, user)  # Iniciamos sesión en Django
+            token, created = Token.objects.get_or_create(user=user)  # Creamos o obtenemos el token
             return Response({
                 'token': token.key,
                 'user_id': user.id,
                 'username': user.username,
                 'role': user.role
             })
+        print("--------------------------------------------------")
+        print("Errores del Serializer en el backend:", serializer.errors) 
+        print("--------------------------------------------------")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     @action(detail=False, methods=['post'])
@@ -31,7 +34,7 @@ class UserViewSet(viewsets.ModelViewSet):
             request.user.auth_token.delete()
         except:
             pass
-        logout(request)
+        logout(request)  # Cerramos sesión
         return Response({'message': 'Successfully logged out'})
     
     @action(detail=False, methods=['get'])
