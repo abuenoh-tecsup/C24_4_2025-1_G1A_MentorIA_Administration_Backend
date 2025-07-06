@@ -13,7 +13,9 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     profile_picture_url = models.URLField(blank=True, null=True)
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='student')
+    # google_id se mantiene, es opcional para la creación
+    google_id = models.CharField(max_length=255, unique=True, blank=True, null=True) 
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='admin')
     
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
