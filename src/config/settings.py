@@ -92,6 +92,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
 ]
 
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -174,3 +175,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'authentication.User'
+
+GOOGLE_CLIENT_ID = "57675650391-sgrn9obc6ocmd4dc1hsk919p5vrnstn7.apps.googleusercontent.com"
