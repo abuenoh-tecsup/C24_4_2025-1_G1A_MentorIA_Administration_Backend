@@ -24,7 +24,7 @@ def seed_authentication():
         password='adminpass123',
         first_name='Alvaro',
         last_name='Bueno',
-        role='professor',
+        role='admin',
         google_id=None
     )
 
