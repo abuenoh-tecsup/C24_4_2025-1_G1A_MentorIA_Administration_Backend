@@ -183,3 +183,8 @@ GOOGLE_CLIENT_ID = "57675650391-sgrn9obc6ocmd4dc1hsk919p5vrnstn7.apps.googleuser
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+if os.getenv('DJANGO_ENV') == 'production':
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+else:
+    SECURE_PROXY_SSL_HEADER = None  # o simplemente no lo definas
