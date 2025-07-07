@@ -6,14 +6,26 @@ def seed_authentication():
 
     print("Creando usuarios, profesores y estudiantes...")
 
-    # Admin user
+    # Admin user 1
     admin_user = User.objects.create_superuser(
         username='admin',
         email='admin@example.com',
         password='adminpass123',
         first_name='Admin',
         last_name='User',
-        role='admin'
+        role='admin',
+        google_id=None
+    )
+
+    # Admin user 2 (Álvaro Bueno)
+    alvaro_admin = User.objects.create_superuser(
+        username='alvaro',
+        email='alvaro.bueno@tecsup.edu.pe',
+        password='adminpass123',
+        first_name='Alvaro',
+        last_name='Bueno',
+        role='professor',
+        google_id=None
     )
 
     # Profesor user
@@ -23,7 +35,8 @@ def seed_authentication():
         password='profpass123',
         first_name='Juan',
         last_name='Perez',
-        role='professor'
+        role='professor',
+        google_id=None
     )
     prof_profile = Professor.objects.create(
         user=prof_user,
@@ -42,7 +55,8 @@ def seed_authentication():
         password='studpass123',
         first_name='Maria',
         last_name='Gonzalez',
-        role='student'
+        role='student',
+        google_id=None
     )
     career = Career.objects.get(code='C24')
     student_profile = Student.objects.create(
