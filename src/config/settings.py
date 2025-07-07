@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -179,3 +180,5 @@ AUTH_USER_MODEL = 'authentication.User'
 GOOGLE_CLIENT_ID = "57675650391-sgrn9obc6ocmd4dc1hsk919p5vrnstn7.apps.googleusercontent.com"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
